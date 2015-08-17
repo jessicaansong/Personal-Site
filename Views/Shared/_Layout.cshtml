@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jessica Ansong</title>
+    <!-- CSS Global -->
+    
+
+    <!-- CSS Plugins -->
+    
+    <link href="~/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    
+    <link href="~/Content/animate.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
+    <!-- CSS Custom -->
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/custom.css" rel="stylesheet" />
+    <link href="~/Content/elements.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.responsive.css" rel="stylesheet" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css">
+
+    
+    @Scripts.Render("~/bundles/modernizr")
+
+</head> 
+    
+    <!-- Navbar
+    ============= -->
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse">
+                
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home","Index","Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Portfolio", "Portfolio", "Home")</li>
+                    <li>@Html.ActionLink("Resume", "Resume", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
+                    <li>@Html.ActionLink("Blog", "Index", "BlogPosts")</li>
+                
+                </ul>
+                <!-- Search form for extra small screens -->
+                <form class="navbar-form navbar-left visible-xs" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-blue">Go!</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right hidden-xs"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main body
+    ================== -->
+        
+            @RenderBody()
+       
+
+    <!-- Foooter
+     ================== -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <!-- Contact Me
+                =================  -->
+                <div class="col-sm-4">
+                    <div class="headline"><h3>Contact</h3></div>
+                    <div class="content">
+                        <p>
+                            Jessica Ansong<br />
+                            1231 Shields Rd, Ste #5<br />
+                            Kernersville, NC 27284
+                            Phone: (770) 283-0670<br />
+                            Email: <a href="jessica.ansong@gmail.com">jessica.ansong@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+                <!-- Social icons
+                ===================== -->
+                <div class="col-sm-4">
+                    <div class="headline"><h3>Connect</h3></div>
+                    <div class="content social">
+                        <p>Stay in touch with me:</p>
+                        <ul>
+                            <li>
+                                <a href="http://www.twitter.com/jessicaansong"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="http://www.facebook.com/jessicaansong"><i class="fa fa-facebook"></i></a>
+                            </li>
+                           
+                            <li>
+                                <a href="http://www.github.com/jessicaansong"><i class="fa fa-github"></i></a>
+                            </li>
+                            <li>
+                                <a href="http://www.linkedin.com/in/jessicaansong"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+        </footer>
+
+
+
+                @Scripts.Render("~/bundles/jquery")
+                @Scripts.Render("~/bundles/bootstrap")
+
+                <!--=======JQUERY DOT DOT DOT PLUGIN-->
+                <script src="~/Scripts/jquery.dotdotdot.js"></script>
+                <!--=======JQUERY DOT DOT DOT PLUGIN ENDS======-->
+
+                <!-- JS Plugins -->
+
+                <script src="~/Scripts/js/scrolltopcontrol.js"></script>
+                <!-- DataTables-->
+                <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+                <!-- JS Custom -->
+
+                <script src="~/Scripts/js/custom.js"></script>
+                <script src="~/Scripts/DataTables/dataTables.responsive.min.js"></script>
+                @RenderSection("scripts", required: false)
+
+                <!---->
+</body>
+</html>
+
+   

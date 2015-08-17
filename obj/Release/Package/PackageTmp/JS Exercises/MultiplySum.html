@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title></title>
+</head>
+<body>
+    <!--PROBLEM 2  Define a function sum() and a function multiply () that sums and multiplies (respectively all the numbers in an array of numbers-->
+    <script type="text/javascript">
+        var numbers = [1, 2, 3, 4];
+
+function sum(num) {
+    var total = 0;
+    for (var i = 0; i < num.length; i++) {
+        total += num[i];
+    }
+    return total;
+}
+
+function multiply(num) {
+    //Setting total to one, since multiplying by zero will yeild zero
+    var total = 1;
+    for (var i = 0; i < num.length; i++) {
+        total = total * num[i]; 
+    }
+    return total;
+
+}
+alert(sum(numbers));
+alert(multiply(numbers));
+    </script>
+    </body>
+</html>
+      

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Palindrome</title>
+		</head>
+		<body>
+			<h2>Palindrome</h2>
+				<script>
+					var word = prompt("Input a word"); <!--Creates a box upon loading a page that prompts the user to perform an action-->
+
+					function reverse(s){									
+						return s.split('').reverse().join('')
+					}<!--This is my function. Remember, it does not work without the open and close bracket-->
+					
+					var reversedWord = reverse(word); <!--Define the variable reversedword, in which the reverse of a word is taken, based on reverse function-->
+					
+					if(word === reversedWord)
+						alert("It's a palindrome!");
+					else
+						alert("It's not a palindrome!");
+					
+				</script>
+	
+		</body>
+
+	</html>

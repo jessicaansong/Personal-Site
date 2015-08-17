@@ -1,0 +1,151 @@
+﻿
+@using PagedList.Mvc;
+@using PagedList;
+
+
+
+
+@model PagedList<Blog.Models.BlogPost>
+@{
+    ViewBag.Title = "Index";
+}
+<!-- Navbar
+============= -->
+<div class="wrapper">
+    <div class="section-header">
+        <!-- Remove the .animated class if you don't want things to move -->
+        <h1 class="animated slideInLeft"><span> &nbsp; &nbsp; Blog</span></h1>
+        <form class="navbar-form navbar-left visible-xs" role="search">
+                <input type="text" class="form-control" placeholder="Search">
+            <button type="submit" class="btn btn-blue">Go!</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right hidden-xs">
+            <!-- Search Button -->
+            <li id="search">
+                <a href="#" id="search-btn"><i class="fa fa-search" id="search-icon"></i> Search</a>
+                <div class="search-box hidden" id="search-box">
+                    <form method="post" action="@Url.Action("Index", "BlogPosts")">
+                        <input type="text" class="form-control" name="Query" placeholder="Search">
+
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">Go!</button>
+                        </span>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <!--Blog Post-->
+                <div class="timeline-block">
+                    <!-- First blog post -->
+                    <div class="blog-summary">
+
+                        <!--Title Date of Creation-->
+                        @foreach (var item in Model)
+                        {                                                           <!--FOR NEW YELLOW TAG-->
+                        <!--POST #1-->                           <!--<h4 class="new-story">-->
+
+                            //@foreach is needed for each IEnumerable, or list.
+                            //var item refers to the blogPosts and the model refers to the database
+
+                            <h4>
+                                <a href="@Url.Action("Details", new {slug = item.Slug })">  @Html.DisplayFor(modelItem => item.Title)</a>
+                            </h4>
+                            //literally means display each title in the model
+
+                            //typically, we'd follow the url action link sequence, but since we are already in the controller that we need, we can just specify the action and indicated that we want the sequence to identify by the slug.
+
+                            //<time datetime="07-25-1985" class="timestamp hidden-xs"></time>
+
+                            <ul class="text-muted list-inline">
+                                <li>
+                                    <i class="fa fa-user"></i>
+                                    <a href="profile.html">Jessica Ansong</a>
+                                </li>
+
+                                <li><i class="fa fa-calendar"></i> @Html.DisplayFor(modelItem => item.Created)</li>
+                                <!--<li><i class="fa fa-comments-o"></i> 21 comments</li>-->
+                            </ul>
+                            <hr>
+
+                            <div class=" ellipsis">
+                                <!--<img class="pull-right img-responsive blog-img" alt="Blog Image" src="img/works1.jpg">-->
+                                @Html.Raw(item.Blog)
+
+
+                                @if (item.MediaURL != null)
+                                {
+                                    <img class="img-responsive" src="@item.MediaURL" alt="">
+                                    <hr>
+                                }
+                                <p class="blog-text">
+                                </p>
+                            </div>
+                            <br />
+                            <input type="button" class="btn btn-default" onclick="location.href=' @Url.Action("Details", new {item.Slug})'" value="Read More" />
+                            //here we are inserting a button. the location.href means that when you click on the link, you'll be directed to the details page.
+                            <br />
+                            <br />
+
+                            <hr />
+
+                            <br />
+
+
+                        }
+                    </div>
+                </div>
+            </div> <!--/left column-->
+
+            <div class="col-sm-4">
+                <!-- Recently Added -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Recently Added</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="recent-blogs">
+                            <ul>
+                                @foreach (var item in Model)
+                                {
+                                    <li><a href="@Url.Action("Details", new {slug = item.Slug })">@Html.DisplayFor(modelItem => item.Title)</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    @Html.Partial("_LoginPartial")
+                </div>
+
+            </div> <!--/right- column-->
+
+        </div> <!--/row-->
+    </div> <!--/ wrappper-->
+
+@section scripts{
+    <script src="~/Scripts/Ellipsis.js"></script>
+    <script src="~/Scripts/jquery.dotdotdot.js"></script>
+    <script src="~/Scripts/jquery.dotdotdot.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $(".ellipsis").dotdotdot({ //.ellipsis indicates that we are creating a class called ellipsis
+                ellipsis: 'Read More',
+                wrap: 'word',
+                watch: true,
+                height: 50,
+            });
+        })
+    </script>
+
+
+}
+<div class="col-sm-8">
+
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>
+

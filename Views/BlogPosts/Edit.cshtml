@@ -1,0 +1,149 @@
+﻿@model Blog.Models.BlogPost
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Edit</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <!--==========CREATE============================================/-->
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Created, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Created, new { htmlAttributes = new { @class = "form-control", @readonly="" } })
+                @Html.ValidationMessageFor(model => model.Created, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <!--==========CREATE ENDS=============================================/-->
+
+
+
+        <!--==========UPDATE FIELD======================================/-->
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Updated, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Updated, new { htmlAttributes = new { @class = "form-control", @readonly=""} })
+                @Html.ValidationMessageFor(model => model.Updated, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!--============UPDATE ENDS======================================/-->
+
+
+
+
+        <!--============TITLE BEGINS======================================/-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <!--==============TITLE ENDS======================================/-->
+
+
+
+
+        <!--=============SLUG BEGINS======================================/-->
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Slug, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Slug, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.Slug, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <!--=============SLUG ENDS======================================/-->
+
+
+
+
+        <!--=============BLOG BEGINS======================================/-->
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Blog, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Blog, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Blog, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!--==============BLOG ENDS======================================/-->
+
+
+
+
+        <!--=================MEDIA BEGINS======================================/-->
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MediaURL, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MediaURL, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MediaURL, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!--==========MEDIA ENDS===========================================/-->
+
+
+        <!--=================================SAVE BEGINS======================================/-->
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+            <!--=================================SAVE ENDS======================================/-->
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section Scripts {
+
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
+   
+    <!-- place in header of your html document -->
+<script>
+tinymce.init({
+    selector: "textarea",
+    theme: "modern",
+    width: 800,
+    height: 300,
+    plugins: [
+         "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+         "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+         "save table contextmenu directionality emoticons template paste textcolor"
+   ],
+   content_css: "css/content.css",
+   toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons", 
+   style_formats: [
+        {title: 'Bold text', inline: 'b'},
+        {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+        {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+        {title: 'Example 1', inline: 'span', classes: 'example1'},
+        {title: 'Example 2', inline: 'span', classes: 'example2'},
+        {title: 'Table styles'},
+        {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+    ]
+ }); 
+</script>
+}

@@ -1,0 +1,914 @@
+﻿<div class="wrapper">
+    <div class="section-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- Remove the .animated class if you don't want things to move -->
+
+                <h1 class="animated slideInLeft">&nbsp;&nbsp;&nbsp;<span>Portfolio</span></h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="~/Content/SyntaxHighlighter/shCore.css" rel="stylesheet" />
+<link href="~/Content/SyntaxHighlighter/shThemeDefault.css" rel="stylesheet" />
+
+<!--Max Javascript-->
+<script src="~/Scripts/max.js"></script>
+<!--Product Javascript-->
+<script src="~/Scripts/product.js"></script>
+<!--Sum Javascript-->
+<script src="~/Scripts/sum.js"></script>
+<script src="~Uploads/factorial.js"></script>
+<!--factorial-->
+<script src="~/Scripts/factorial.js"></script>
+<!--Fizzbuzz Javascript Code-->
+<script src="~/Scripts/fizzbuzz.js"></script>
+<script src="~/Scripts/fizzbuzz2.js"></script>
+<!--WordFreq Javascript Code-->
+<script src="~/Scripts/wordfreq.js"></script>
+<!--Find Word Javascript Code-->
+<script src="~/Scripts/findword.js"></script>
+<!--Armstrong Javascript-->
+<script src="~/Scripts/armstrong.js"></script>
+<!--Perfect Javascript Code-->
+<script src="~/Scripts/perfect.js"></script>
+<!--Happy Javascript Code-->
+<script src="~/Scripts/happy.js"></script>
+<!--FilterWord-->
+<script src="~/Scripts/filter.js"></script>
+@{
+    ViewBag.Title = "Portfolio";
+}
+
+<!--Javascript Links-->
+<div class=" container">
+    <div class="row">
+        <ul>
+            <!--Max of Five-->
+            <li><a href="" data-toggle="modal" data-target="#max">Max of Five</a></li>
+            <!--Product and Sum-->
+            <li><a href="" data-toggle="modal" data-target="#productSum">Product & Sum of Numbers</a></li>
+            <!--Factorial-->
+            <li><a href="" data-toggle="modal" data-target="#factorial">Factorial</a></li>
+            <!--Fizz Buzz-->
+            <li><a href="" data-toggle="modal" data-target="#fizzbuzz">Fizz Buzz</a></li>
+            <!--Perfect Number-->
+            <li><a href="" data-toggle="modal" data-target="#perfect">Perfect Number</a></li>
+            <!--Armstrong Number-->
+            <li><a href="" data-toggle="modal" data-target="#armstrong">Armstrong Numbers</a></li>
+            <!--Happy Numbers-->
+            <li><a href="" data-toggle="modal" data-target="#happy">Happy Numbers</a></li>
+            <!--Find Word-->
+            <!--<li><a href="" data-toggle="modal" data-target="#findword">Find Word</a></li>
+            <!--Word Frequency-->
+            <li><a href="" data-toggle="modal" data-target="#wordfreq">Word Frequency</a></li>
+            <!--Word Filter-->
+            <li><a href="" data-toggle="modal" data-target="#wordfilter">Word Filter</a></li>
+        </ul>
+    </div>
+</div>
+
+<!--End Javascript Links-->
+
+<!--Max of Five Modal-->
+<div class="modal fade" id="max"tabindex="50" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h1 class="modal-title" id="myModalLabel">Max of Five</h1>
+            </div>
+            <div class="modal-body col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6"> 
+                        <!--Left Column-->
+                        <h3><strong>Description: </strong></h3>
+                        <p>
+                            I designed a program that enables the computer to return the largest of five numbers. Enter five numbers in each of the five text boxes below. Press "Enter" and the largest number will be displayed. 
+                        </p>
+                        <br />
+                        <input type="text" id="n1"/> <br/>
+                        <input type="text" id="n2" />
+                        <input type="text" id="n3" />
+                        <input type="text" id="n4" />
+                        <input type="text" id="n5" />
+                        <button onclick="maxOfFive()">Enter</button>
+                        <p id="maxResult"></p>
+                    </div>
+                        <!--Right Column-->
+                        <div class="col-sm-6"> 
+                        <pre class="brush: js text" >
+                            function maxOfFive(){ //Define the function
+                            var n1 = document.getElementById('n1').value; //Created 5 variables
+                            var n2 = document.getElementById('n2').value;
+                            var n3 = document.getElementById('n3').value;
+                            var n4 = document.getElementById('n4').value;
+                            var n5 = document.getElementById('n5').value;
+                            var result = Math.max(n1, n2, n3, n4, n5); //Take the largest of these variables
+                            var display = document.getElementById('maxResult'); //Show the largest number
+                            display.innerHTML = "The largest number is " + result ;
+                            }
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer no-margin">
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Max Of Five Modal-->
+
+<!--Product & Sum Modal-->
+<div class="modal fade" id="productSum" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h1 class="modal-title" id="myModalLabel">Product & Sum</h1>
+            </div>
+            <div class="modal-body col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        
+                        <!--Left Column-->
+
+                        <!--Start Product Section-->
+                        <h3><strong>Description: </strong></h3>
+                        <p>
+                            I designed a program that enables the computer to return the product of five
+                            numbers. Enter five numbers in each of the five text boxes below. Press "Enter"  and the product will be shown. 
+                        </p>
+                        <br />
+                        <input type="number" id="product_n1" /> <br />
+                        <input type="number" id="product_n2" />
+                        <input type="number" id="product_n3" />
+                        <input type="number" id="product_n4" />
+                        <input type="number" id="product_n5" />
+                        <button onclick="productOfFive()">Enter</button>
+                        <p id="product"></p>
+                        <!--End Product Section -->
+
+                        <!--Start Sum Section-->
+                        <h3><strong>Description: </strong></h3>
+                        <p>
+                            I designed a program that enables the computer to return the sum of five
+                            numbers. Enter five numbers in each of the five text boxes below. Press "Enter"  and the sum will be shown. 
+                        </p>
+                        <br />
+                        <input type="number" id="sum_1" /> <br />
+                        <input type="number" id="sum_2" /> <br />
+                        <input type="number" id="sum_3" /> <br />
+                        <input type="number" id="sum_4" /> <br />
+                        <input type="number" id="sum_5" /> <br />
+                        <button onclick="sumOfFive()">Enter</button>
+                        <p id="sum"></p>
+                        
+                    </div>
+                    <!--Right Column-->
+                    <div class="col-sm-6">
+                        <pre class="brush: js text">
+ function productOfFive() {
+var n1 = document.getElementById('product_n1').value;
+var n2 = document.getElementById('product_n2').value;
+var n3 = document.getElementById('product_n3').value;
+var n4 = document.getElementById('product_n4').value;
+var n5 = document.getElementById('product_n5').value;
+var result = n1 * n2;
+result = result * n3;
+result = result * n4;
+result = result * n5;
+var display = document.getElementById('product');
+display.innerHTML = "The product is " + result;
+}
+
+function sumOfFive() {
+var n1 = parseInt(document.getElementById('sum_1').value);//Convert it to numbers
+var n2 = parseInt(document.getElementById('sum_2').value);
+var n3 = parseInt(document.getElementById('sum_3').value);
+var n4 = parseInt(document.getElementById('sum_4').value);
+var n5 = parseInt(document.getElementById('sum_5').value);
+var result = (n1 + n2 + n3 + n4 + n5);
+var display = document.getElementById('sum');
+display.innerHTML = "The sum is " + result;
+}
+                        </pre>
+                    </div>
+                </div>
+                <div class="row">
+
+                </div>
+            </div>
+            <div class="modal-footer no-margin">
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Product Sum Modal-->
+
+<!--Factorial-->
+<div class="modal fade" id="factorial" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h1 class="modal-title" id="myModalLabel">Factorial</h1>
+            </div>
+            <div class="modal-body col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <!--Left Column-->
+                        <h3><strong>Description: </strong></h3>
+                        <p>
+                          A factorial refers to the product of an integers and all the integers before it. For instance, the factorial of 3 would be 6, because 3 * 2 * 1 = 6. 
+                           
+                            I created the program below to return the factorial of any number a user enters. To determine the factorial of a number, insert an integer and press "Enter."
+                        </p>
+                       
+                        <br />
+                        <input type="number" id="fact_1" />
+                        <input type="button" value="Okay" onclick="fact()"/>
+                        <p id="factResult"></p>
+                    </div>
+                    <!--Right Column-->
+                    <div class="col-sm-6">
+                        <pre class="brush: js text">
+ <p> function fact() {
+    var n1 = parseInt(document.getElementById('fact_1').value);//text box to accept numbers. '.value takes the value of the number.
+    var result = calculate(n1)
+    var display = document.getElementById('factResult');
+    display.innerHTML = "The factorial of the number is " + result ;
+}
+function calculate(n) {
+    var res = 1;
+    for (i=n; i>=1; i--)
+        res = res*i;
+    return res;
+   } </p>                        
+</pre>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer no-margin">
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Factorial Modal-->
+
+<!--Fizz Buzz-->
+<div class="modal fade" id="fizzbuzz" tabindex="-0" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h1 class="modal-title" id="myModalLabel">Fizz Buzz</h1>
+            </div>
+            <div class="modal-body col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <!--Left Column-->
+                        <h3><strong>Description: </strong></h3>
+                        <p>
+                           This program demonstrates a fun exercise in which numbers 1 through 100 are written. Fizz is replaced for multiples of 3 and buzz is replace for integers of 5. Click the button to see how it works!
+                        </p>
+                        <br />
+                        <input type="button" value="Click here" onclick="fizzbuzz()" />
+                        <p id="result"></p>
+
+                        <p> Enter an integer betweeen 1 and 100. For every multiple of the first number, "Fizz," will be printed. For every multiple of the second number, "Buzz" will be printed. For every integer that is a multiple of both the first and and second numbers, "FizzBuzz" will be printed.</p>
+                        <br />
+                        <input type="number" id="x" />
+                        <input type="number" id="y" />                        
+                        <input type="button" value="Okay" onclick="fizzbuzz2()"/>
+                        <textarea id="fizzbuzz_result"></textarea>
+                    </div>
+                    <!--Right Column-->
+                    <div class="col-sm-6">
+                        <pre class="brush: js text">
+function fizzbuzz() {                                                              
+var result = document.getElementById('result');
+for (i = 1; i <= 100; i++) {
+if (i % 15 == 0) {
+ result.innerHTML += "FizzBuzz" + " ";
+} else if (i % 3 == 0) {
+result.innerHTML += "Fizz" + " ";
+} else if (i % 5 == 0) {
+result.innerHTML += "Buzz" + " ";
+} else {
+ result.innerHTML += i + " ";
+ }
+ }
+ }                         
+
+function fizzbuzz2() {
+var result2 = document.getElementById('result2');
+var x = document.getElementById('x').value;
+var y = document.getElementById('y').value;
+ for (i = 1; i <= 100; i++) {
+if (i % x*y == 0) {
+ result2.innerHTML += "FizzBuzz" + " ";
+} else if (i % x == 0) {
+ result2.innerHTML += "Fizz" + " ";
+} else if (i % y == 0) {
+ result2.innerHTML += "Buzz" + " ";
+} else {
+result2.innerHTML += i + " ";
+}
+}
+}
+       </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer no-margin">
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Fizz Buzz-->
+
+<!--Find Word Modal-->
+<!--<div class="modal fade" id="findword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h1 class="modal-title" id="myModalLabel">Find Word</h1>
+            </div>
+            <div class="modal-body col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <!--Left Column-->
+                       <!-- <h3><strong>Description: </strong></h3>
+                        <p>
+                            The program below calculates the total number of occurrences a given word appears in a file. Upload a file, enter a word, click "enter" and the number of time a words appears will populate. 
+                        </p>
+                        <br />
+                        <input type="file" id="searchFileInput" /> <br />
+                        <input type="text" id="userKeyWord" /> <br/>
+                        <input type="button" onclick="wordsearchReadText()" value="Search">
+                        <p id="resultWordSearch"></p>
+
+                    </div>
+                    <!--Right Column-->
+                    <!--<div class="col-sm-6">
+
+                        <pre class="brush: js text">
+                            (function () {
+ 
+    //============= Word Search Reader ======================================//
+window.wordsearchReadText = function () {
+var reader = new FileReader();
+ 
+var output = "";
+var filePath = document.getElementById('searchFileInput');
+if (filePath.files && filePath.files[0]) { //if there is no file, then null, otherwise continue
+reader.onload = function (e) {
+output = e.target.result; //whatever is from the file, then put it in the output.
+//console.log(output);
+var wordSearch = wordSearchChecker(output);
+displayWordSearch(wordSearch)
+}; //end onload()
+reader.readAsText(filePath.files[0]);
+} //end if html5 filelist support
+}
+ 
+//============= WordSearch Checker & Display ==========================//
+function wordSearchChecker(txt) { //function to search for a given word
+var userKeyWord = document.getElementById('userKeyWord').value; //userkeyword is the word that the user enters
+var wordSearch = '';//set another wordsearch "box" that is empty right now until we put something in it
+var array = txt.match(new RegExp(userKeyWord, 'gi'));//set up an array that says that the text must match the userkeyword, gi refers to g=global (look for it many times) and i=case insensitive. new RegExp (new regular expression --><!-- look for this particular variable.
+if (array == null) { //if the array is empty return the following sentence "userkeyword does not appear in the file
+ 
+wordSearch =  "<&h4>" + userKeyWord + "</&h4> " + " does not appear in this file.";
+} else if (array.length == 1) { //if the userkeyword appears once, then return the following statement: userkeyword appears '1' time.  
+wordSearch = "<&h4>" + userKeyWord + "</&h4> " + " appears " + array.length + " time.";
+wordSearch += "<br>";//insert breaks for clarity and aesthetic purposes
+wordSearch += "<br>";
+wordSearch += txt.replace(new RegExp(userKeyWord, 'gi'), "<strong class='btn btn-warning'>" + userKeyWord + "</strong>"); //replace keywords with the highlighter, makes it easier to see.
+} else {
+wordSearch = "<&h4>" + userKeyWord + "</&h4> " + " appears " + array.length + " times.";
+wordSearch += "<br>";
+wordSearch += "<br>";
+wordSearch += txt.replace(new RegExp(userKeyWord, 'gi'), "<strong class='btn btn-warning'>" + userKeyWord + "</strong>");
+}
+return wordSearch;
+}
+function displayWordSearch(word) {
+var searchResult = document.getElementById('resultWordSearch');
+searchResult.innerHTML = word;
+}
+})();                                                
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer no-margin">
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Find Word Modal-->
+
+<!--WordFreq Modal-->
+<div class="modal fade" id="wordfreq" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h1 class="modal-title" id="myModalLabel">Word Freq</h1>
+            </div>
+            <div class="modal-body col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <!--Left Column-->
+                        <h3><strong>Description: </strong></h3>
+                        <p>
+                            Word frequency description here
+                        </p>
+                        <br />
+                        <input type="file" id="freqFileInput2" /> <br />
+                        <input type="button" onclick="wordFrequencyReadText()" value="Enter">
+                        <p id="freqResult"></p>
+
+                    </div>
+                    <!--Right Column-->
+                    <div class="col-sm-6">
+                        
+                        <pre class="brush: js text">
+                                                    (function () {
+ //============= Word Search Reader ======================================//
+window.wordsearchReadText = function () {
+var reader = new FileReader();
+var output = "";
+var filePath = document.getElementById('searchFileInput');
+if (filePath.files && filePath.files[0]) { //if there is no file, then null, otherwise continue
+ reader.onload = function (e) {
+output = e.target.result; //whatever is from the file, then put it in the output.
+//console.log(output);
+var wordSearch = wordSearchChecker(output);
+ displayWordSearch(wordSearch)
+}; //end onload()reader.readAsText(filePath.files[0]);
+} //end if html5 filelist support
+}
+(function () {
+ 
+ //============  Word Frequency Reader =====================================//
+window.wordFrequencyReadText = function () {
+var reader = new FileReader();
+var output = "";
+var filePath = document.getElementById('freqFileInput');
+if (filePath.files && filePath.files[0]) {
+reader.onload = function (e) {
+output = e.target.result;
+var wordFrequency = wordFrequencyChecker(output);
+displayWordFrequency(wordFrequency)
+\}; //end onload()
+reader.readAsText(filePath.files[0]);
+} //end if html5 filelist support
+}
+//============== Word frequency Checker & Display =======================//
+function wordFrequencyChecker(txt) {
+var textArray = txt.split(" ");
+var wordFrequency = "";
+var selectedWord = "";
+var printedWords = {};
+ // First Count The Words in the Array
+ for (i = 0; i < textArray.length; i++) {
+selectedWord = textArray[i].replace(/[^\w]/gi, '').toLowerCase();
+if (printedWords[selectedWord] != null)
+printedWords[selectedWord]++;
+else
+printedWords[selectedWord] = 1;
+}
+ 
+// Create Dictionary - Create Array of Objs 
+var arr = [];
+for (key in printedWords) {
+arr.push({ word: key, count: printedWords[key] });
+}
+//Sort Dictionary in Descending Order
+arr.sort(function (a, b) { return b.count - a.count });
+ 
+wordFrequency = arr.reduce(function (a, b) {
+return a += b.word + " appears " + b.count + " times." + "<br>"
+}, " ");
+return wordFrequency;
+}
+function displayWordFrequency(word) {
+var freqResult = document.getElementById('freqResult');
+freqResult.innerHTML = word;
+}
+})();
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer no-margin">
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Word Fre Modal-->
+
+<!-- Armstrong Modal-->
+<div class="modal fade" id="armstrong" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h1 class="modal-title" id="myModalLabel">Armstrong</h1>
+            </div>
+            <div class="modal-body col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+
+                        <!-------------------------Left Column------------------->
+
+                        <h3><strong>Description: </strong></h3>
+
+                        <p>
+                            Armstrong numbers are three digit integers, such that when the digits are cubed, the result equals the number itself. For instance, 371 is an Armstrong number since 3³ + 7³ + 1³ is an Armstong number.
+                        </p>
+                        <br />
+
+                        <!--Generate Button-->
+
+                        <button onclick="disArmstrong(100)">Generate</button>
+
+                        <!--Results Displayed Here-->
+
+                        <h4 id="resultArmstrong"></h4>
+
+                    </div>
+
+                    <!-------------------------Right Column------------------->
+
+                    <div class="col-sm-6">
+                        
+                        <pre class="brush: js text">
+
+function armstrong(n) {
+var arr = [];
+var newNum = 0;
+//Take n and split the digits into single numbers
+var num = n.toString().split("");
+for (var i = 0; i < num.length; i++) {
+arr[i] = parseInt(num[i], 10);
+//The base of 10 is taken because Armstrong numbers are 3-digit numbers
+}
+//Now cube the numbers and add them together
+for (var i = 0; i < arr.length; i++) {
+newNum += Math.pow(arr[i], 3);
+}
+//Here we check to see if the newNum matches the original num
+if (newNum === n) {
+return true;
+} else {
+return false;
+}
+}
+function isArmstrong(num) {
+var armstrong = document.getElementById('resultArmstrong');
+for (j = num; j < 1000; j++) {
+if (armstrongChecker(j)) {
+armstrong.innerHTML += j + " is an Armstrong Number." + "<br>";
+}
+}
+}
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer no-margin">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Armstrong Modal-->
+
+<!--Perfect Numbers Modal-->
+<div class="modal fade" id="perfect" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h1 class="modal-title" id="myModalLabel">Perfect Number</h1>
+            </div>
+            <div class="modal-body col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+
+                        <!-------------------------Left Column------------------->
+                        <h3><strong>Description: </strong></h3>
+
+                        <p>
+                            A perfect number is positive integer that is equal to the sum of its proper positive divisors. For instance, 6 is a perfect number because its positive divisors are 1, 2, and 3. The sum of these numbers is 6. 
+
+                            When you click on the button below, all perfect numbers will be shown.
+                        </p>
+                        <br />
+
+                        <!--Generate Button-->
+
+                        <button onclick="displayPerfect(1)">Generate!</button>
+
+                        <!--Results Displayed Here-->
+
+                        <h4 id="resultPerfect"></h4>
+
+                    </div>
+
+                    <!-------------------------Right Column------------------->
+
+                    <div class="col-sm-6">
+                        ""
+                        <pre class="brush: js text">
+//Checks whether a given number is perfect.
+function isItPerfect(n) {
+var temp = 0;
+for (var x = 1; x <= n / 2; x++) {
+if (n % x === 0) {
+temp += x;
+}
+}
+if (temp === n) {
+return true;
+} else {
+return false;
+}
+}
+ //Identify perfect numbers between 1 and 10000
+ function displayPerfect(num) {
+var displayHtml = document.getElementById('resultPerfect');
+for (p = num; p < 10000; p++) {
+if (perfectChecker(j)) {
+displayHtml.innerHTML += j + " is a Perfect Number" + "<br>";
+}
+}
+}
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer no-margin">
+            </div>
+        </div>
+    </div>
+</div>
+<!--END Perfect Modal-->
+
+
+<!-- Happy Numbers Modal-->
+<div class="modal fade" id="happy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h1 class="modal-title" id="myModalLabel">Happy Numbers</h1>
+            </div>
+            <div class="modal-body col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+
+                        <!-------------------------Left Column------------------->
+
+                        <h3><strong>Description: </strong></h3>
+
+                        <p>
+                            A happy number refers to a number that can be reduced to 1 through the following process.
+                            <ol> 
+                                <li>Start with a positive integer</li>
+                                <li>Replace the number with the sum of the square of its digits</li>
+                                <li>Repeat until the result is 1 or an endless loop</li>
+                            </ol>
+                        </p>
+                        <br />
+
+                        <!--Generate Button-->
+
+                        <button onclick="disHappy(1)">Generate!</button>
+
+                        <!--Results Displayed Here-->
+
+                        <h4 id="resultHappy"></h4>
+
+                    </div>
+
+                    <!-------------------------Right Column------------------->
+
+                    <div class="col-sm-6">
+                        ""
+                        <pre class="brush: js text">
+//Checks whether a given number is perfect.
+function isItPerfect(n) {
+var temp = 0;
+ for (var x = 1; x <= n / 2; x++) {
+if (n % x === 0) {
+temp += x;
+}
+}
+f (temp === n) {
+return true;
+} else {
+ return false;
+}
+}
+ //Identify perfect numbers between 1 and 10000
+function displayPerfect(num) {
+var displayHtml = document.getElementById('resultPerfect');
+for (p = num; p < 10000; p++) {
+ if (perfectChecker(j)) {
+ displayHtml.innerHTML += j + " is a Perfect Number" + "<br>";
+}
+}
+}
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer no-margin">
+            </div>
+        </div>
+    </div>
+</div>
+<!--END Happy Modal-->
+
+<!--Filter Modal-->
+<div class="modal fade" id="wordfilter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h1 class="modal-title" id="myModalLabel">Word Filter</h1>
+            </div>
+            <div class="modal-body col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <!--Left Column-->
+                        <h3><strong>Description: </strong></h3>
+                        <p>
+                            The following program is designed such that when you input a number in the text box, all words that are longer than the number are displayed.
+                        </p>
+                        <br />
+                        <input type="file" id="wordFilterFileInput" /> <br />
+                        <input type="text" id="userNumberWordFilter" /> <br />
+                        <input type="button" onclick="wordFilterReadText()" value="Enter">
+                        <p id="filterResult"></p>
+
+                    </div>
+                    <!--Right Column-->
+                    <div class="col-sm-6">
+
+                        <pre class="brush: js text">
+                                                        (function () {
+    //============  Word Filter Reader =====================================//
+    window.wordFilterReadText = function () {
+        var reader = new FileReader();
+        var output = "";
+        var filePath = document.getElementById('wordFilterFileInput');
+        if (filePath.files && filePath.files[0]) {
+            reader.onload = function (e) {
+                output = e.target.result;
+                var wordFilter = wordFilterChecker(output);
+                displayWordFilter(wordFilter)
+            }; //end onload()
+            reader.readAsText(filePath.files[0]);
+        } //end if html5 filelist support
+    }
+    //============== Word Filter Checker & Display =======================//
+    function wordFilterChecker(txt) {
+        var userNumber = parseFloat(document.getElementById('userNumberWordFilter').value);
+        var textArray = txt.split(new RegExp(/[\s,()\n\r\t]+/));
+        var wordFilter = '';
+        var selectedWord = '';
+        var printedWords = {};
+        for (i = 0; i < textArray.length; i++) {
+            selectedWord = textArray[i].replace(/[^\w]/gi, ' ').toLowerCase();
+            if (selectedWord.length > userNumber) {
+                if (printedWords[selectedWord] == null) {
+                    wordFilter += selectedWord + "<br>";
+                    printedWords[selectedWord] = true;
+                }
+            }
+        }
+        return wordFilter;
+    }
+    function displayWordFilter(word) {
+        var filterResult = document.getElementById('filterResult');
+        //filterResult.innerHTML += word + "<br>";
+        filterResult.innerHTML = word;
+    }
+})();                       
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer no-margin">
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Find Word Modal-->
+
+
+<!--Filter Modal-->
+<div class="modal fade" id="displayContent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h1 class="modal-title" id="myModalLabel">Word Filter</h1>
+            </div>
+            <div class="modal-body col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <!--Left Column-->
+                        <h3><strong>Description: </strong></h3>
+                        <p>
+                            The following program is designed to accept a file and the display the content. 
+                        </p>
+                        <br />
+                        <input type="file" id="wordFilterFileInput" /> <br />
+                        <input type="text" id="userNumberWordFilter" /> <br />
+                        <input type="button" onclick="wordFilterReadText()" value="Enter">
+                        <p id="filterResult"></p>
+
+                    </div>
+                    <!--Right Column-->
+                    <div class="col-sm-6">
+
+                        <pre class="brush: js text">
+                                                        (function () {
+    //============  Word Filter Reader =====================================//
+    window.wordFilterReadText = function () {
+        var reader = new FileReader();
+        var output = "";
+        var filePath = document.getElementById('wordFilterFileInput');
+        if (filePath.files && filePath.files[0]) {
+            reader.onload = function (e) {
+                output = e.target.result;
+                var wordFilter = wordFilterChecker(output);
+                displayWordFilter(wordFilter)
+            }; //end onload()
+            reader.readAsText(filePath.files[0]);
+        } //end if html5 filelist support
+    }
+    //============== Word Filter Checker & Display =======================//
+    function wordFilterChecker(txt) {
+        var userNumber = parseFloat(document.getElementById('userNumberWordFilter').value);
+        var textArray = txt.split(new RegExp(/[\s,()\n\r\t]+/));
+        var wordFilter = '';
+        var selectedWord = '';
+        var printedWords = {};
+        for (i = 0; i < textArray.length; i++) {
+            selectedWord = textArray[i].replace(/[^\w]/gi, ' ').toLowerCase();
+            if (selectedWord.length > userNumber) {
+                if (printedWords[selectedWord] == null) {
+                    wordFilter += selectedWord + "<br>";
+                    printedWords[selectedWord] = true;
+                }
+            }
+        }
+        return wordFilter;
+    }
+    function displayWordFilter(word) {
+        var filterResult = document.getElementById('filterResult');
+        //filterResult.innerHTML += word + "<br>";
+        filterResult.innerHTML = word;
+    }
+})();                       
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer no-margin">
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Find Word Modal-->
+
+
+<script>
+   
+        SyntaxHighlighter.all();
+
+</script>
+
+@section scripts{
+<script src="~/Scripts/SyntaxHighlighter/shCore.js"></script>
+
+<script src="~/Scripts/SyntaxHighlighter/shBrushJScript.js"></script>
+<script src="~/Scripts/fizzbuzz.js"></script>
+<script src="~/Scripts/findword.js"></script>
+<script>
+
+    SyntaxHighlighter.all();
+
+</script>
+
+}

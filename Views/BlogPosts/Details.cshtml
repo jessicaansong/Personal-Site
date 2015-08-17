@@ -1,0 +1,142 @@
+﻿@model Blog.Models.BlogPost
+           @using Microsoft.AspNet.Identity 
+        @{
+
+          ViewBag.Title = "Details";
+          
+            }
+   
+
+    <!-- Main body-->
+    <div class="wrapper">
+        <div class="section-header">
+                    <div class="col-sm-12">
+                        <!-- Remove the .animated class if you don't want things to move -->
+                        <h1 class="animated slideInLeft">&nbsp;&nbsp;&nbsp;<span>Blog </span></h1>
+                    </div>
+        </div>
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-sm-8">
+
+                    <h2>
+                        @Html.DisplayFor(model => Model.Title)
+                    </h2>
+
+                    <ul class="text-muted list-inline">
+                        <li><a href="profile.html">  Jessica Ansong</a></li>
+                        <li><i class="fa fa-calendar"></i>@Html.DisplayFor(model => Model.Created)</li>
+                        <li>
+                        </li>
+                    </ul>
+                    <div>
+                        <p> @Html.Raw(Model.Blog) </p>
+
+
+                        @if (Model.MediaURL != null)
+                        {
+                            <img class="img-responsive" src="@Model.MediaURL" alt="">
+                            <hr>
+                        }
+                    </div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+                        <div class="new-comment">
+                            <form class="form-horizontal" method="post" action="@Url.Action("CreateComment")" role="form">
+                                <div class="form-group">
+                                    <div class="col-sm-10">
+                                        <h5> Leave A Comment</h5>
+
+                                        <textarea class="form-control" rows="3" name="Body"></textarea>
+                                        @Html.AntiForgeryToken()
+
+                                        <input type="hidden" name="PostId" value="@Model.Id" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-dark btn-sm">Post comment</button>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="new-comment">
+                            Pleease login to leave a comment.
+                            <p>
+                                @Html.ActionLink("Sign In", "Login", "Account")
+                            </p>
+                        </div>
+                    }
+
+                    <!-- New comment form -->
+                    <!-- Comments list -->
+                    <h5>Comments</h5>
+                    <hr>
+                    @foreach (var item in Model.Comments.OrderByDescending(c => c.Created))
+                    {
+                        <p><a href="profile.html">@Html.DisplayFor(modelItem => item.Author.UserName)</a></p>
+                        <p>
+                            @Html.DisplayFor(modelItem => item.Body)
+                        </p>
+                        <ul class="text-muted list-inline">
+                            <li><i class="fa fa-clock-o"></i> @Html.DisplayFor(modelItem => item.Created)</li>
+
+                            <li><i class="fa fa-cog"></i> @Html.ActionLink("Edit", "EditComment", new { id = item.Id });
+
+                            <li><i class="fa fa-cog"></i> @Html.ActionLink("Delete", "DeleteComment", new { id = item.Id });
+                        </ul>
+                    }
+
+                </div><!-- /column (left)-->
+
+                <div class="col-sm-4">
+                    <!-- Recently Added -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Recently Added</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="recent-blogs">
+                                <ul>
+                                    @foreach (var item in ViewBag.PostList)
+                                    {
+                                        <li><a href="@Url.Action("Details", new {slug = item.Slug })">@item.Title</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        @Html.Partial("_LoginPartial")
+                    </div>
+
+                <div class="panel panel-default">
+                    @Html.ActionLink("Admin", "Admin", "BlogPosts")    
+                     </div>
+                </div> <!--/right- column-->
+
+            </div><!-- /row -->
+
+        </div><!-- container -->
+
+</div><!-- /wrapper -->
+                                       
+                    
+             
+
+         <p>      
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+@if(!User.Identity.IsAuthenticated )
+{
+}

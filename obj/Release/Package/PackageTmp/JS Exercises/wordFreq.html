@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+    (function () {
+        var reader;
+        window.checkFileAPI = function () {
+            if (window.File && window.FileReader && window.FileList && window.Blob) {
+                reader = new FileReader();
+                return true;
+            } else {
+                alert('The File APIs are not fully supported by your browser. Fallback required.');
+                return false;
+            }
+        }
+
+        //============  Word Frequency Reader =====================================//
+
+        window.wordFrequencyReadText = function () {
+
+            var output = "";
+
+            var filePath = document.getElementById('freqFileInput');
+
+            if (filePath.files && filePath.files[0]) {
+                reader.onload = function (e) {
+                    output = e.target.result;
+                    var wordFrequency = wordFrequencyChecker(output);
+                    // console.log("freq: ")
+                    // console.log(wordFrequency)
+                    displayWordFrequency(wordFrequency)
+                }; //end onload()
+                reader.readAsText(filePath.files[0]);
+            } //end if html5 filelist support
+        }
+
+        //============== Word frequency Checker & Display =======================//
+
+        function wordFrequencyChecker(txt) {
+            var textArray = txt.split(" ");
+            var wordFrequency = "";
+            var selectedWord = "";
+            var printedWords = {};
+
+            // First Count The Words in the Array
+            for (i = 0; i < textArray.length; i++) {
+                selectedWord = textArray[i].replace(/[^\w]/gi, '').toLowerCase();
+                if (printedWords[selectedWord] != null)
+                    printedWords[selectedWord]++;
+                else
+                    printedWords[selectedWord] = 1;
+            }
+
+
+            // Create Array of Objs
+
+            var arr = [];
+
+            for (key in printedWords) {
+                arr.push({ word: key, count: printedWords[key] });
+            }
+
+            arr.sort(function (a, b) { return b.count - a.count });
+
+
+            wordFrequency = arr.reduce(function (a, b) {
+                return a += b.word + " appears " + b.count + " times." + "<br />"
+            }, " ");
+
+
+
+            return wordFrequency;
+        }
+
+        function displayWordFrequency(word) {
+            var freqResult = document.getElementById('freqResult');
+            freqResult.innerHTML = word;
+
+
+        }
+
+    })();
+    </script>
+
+</body>
+</html>
